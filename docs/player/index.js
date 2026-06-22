@@ -1,5 +1,9 @@
 // player/index.ts
-var ws = new WebSocket("ws://localhost:8081");
+var URL = "ws://localhost:8081";
+if (window.origin.includes("siemvk.nl")) {
+  URL = "ws://ws.siemvk.nl/";
+}
+var ws = new WebSocket(URL);
 function wsSend(ws2, data) {
   ws2.send(JSON.stringify(data));
 }
@@ -100,5 +104,5 @@ export {
   init
 };
 
-//# debugId=43656E90DF7AD00A64756E2164756E21
+//# debugId=EBBFDB23DFE2AD9C64756E2164756E21
 //# sourceMappingURL=index.js.map

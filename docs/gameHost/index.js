@@ -1,7 +1,11 @@
 // gameHost/index.ts
 var code = document.getElementById("code");
-var ws = new WebSocket("ws://localhost:8081");
-var adminWs = new WebSocket("ws://localhost:8081");
+var URL = "ws://localhost:8081";
+if (window.origin.includes("siemvk.nl")) {
+  URL = "ws://ws.siemvk.nl/";
+}
+var ws = new WebSocket(URL);
+var adminWs = new WebSocket(URL);
 var pin = "None";
 var Apin = "None";
 var fase = "voorbereiden";
@@ -108,5 +112,5 @@ function updC() {
   document.getElementById("adminPin").innerText = "De code is: " + Apin;
 }
 
-//# debugId=D2093C171F1C7AF164756E2164756E21
+//# debugId=928928177FC0D98864756E2164756E21
 //# sourceMappingURL=index.js.map
