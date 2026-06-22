@@ -6,6 +6,9 @@ if (localStorage.getItem("testing") !== null) {
     URL = "ws://localhost:8081"
 }
 
+(document.getElementById("pinInput") as HTMLInputElement).value = (new URLSearchParams(window.location.search)).get('p') as string
+if ((new URLSearchParams(window.location.search)).has('p')) { document.getElementById("pinInput")!.parentElement!.hidden = true }
+
 const ws = new WebSocket(URL)
 
 let pin = "None"
@@ -14,14 +17,19 @@ function wsSend(ws: WebSocket, data: toServer) {
     ws.send(JSON.stringify(data))
 }
 
+ws.addEventListener("close", () => location.reload())
+
 ws.addEventListener("open", (ev) => {
     genReserved()
 
     document.getElementById("sendBtn")!.onclick = () => {
         const input: HTMLInputElement = document.getElementById("pinInput") as HTMLInputElement;
+        const input2: HTMLInputElement = document.getElementById("nameInput") as HTMLInputElement;
+
         wsSend(ws, {
             type: 'connect',
-            pin: input.value
+            pin: input.value,
+            naam: input2.value.replaceAll("-", "_")
         })
     }
 })
@@ -95,6 +103,7 @@ function renderElement(el: element) {
             if (existingBtn) {
                 existingBtn.innerText = el.content
             } else {
+                const br = document.createElement("br")
                 const newElement = document.createElement("button");
                 newElement.classList.add("btn", "filled", "icon-right", "rounded", "waves-effect", "waves-light")
                 newElement.innerHTML = el.content
@@ -117,7 +126,7 @@ function renderElement(el: element) {
                         });
                     }
                 }
-
+                gameCard.appendChild(br)
                 gameCard.appendChild(newElement)
             }
             break;
