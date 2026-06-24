@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUIZ</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@materializecss/materialize@2.2.2/dist/css/materialize.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+
+    <style>
+        body {
+            padding: 24px;
+            background-color: #1e1e1e;
+            color: #ffffff;
+        }
+
+        .card {
+            max-width: 600px;
+            text-align: center;
+            background-color: #252729;
+            padding: 20px;
+            border-radius: 10px;
+            margin: auto;
+            color: white;
+        }
+
+        .card div {
+            margin-bottom: 10px;
+        }
+
+        #vraagFoto {
+            max-width: 100%;
+            max-height: 350px;
+            border-radius: 8px;
+            margin: 15px 0;
+            object-fit: contain;
+        }
+
+        .collection {
+            border: none;
+        }
+
+        .collection .collection-item {
+            background-color: #333;
+            border-bottom: 1px solid #444;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="modal1" class="modal" popover>
+        <div class="modal-header black-text">
+            <h4>Pincode</h4>
+        </div>
+        <div class="modal-content black-text">
+            <p id="pin-pop">De code is: </p>
+            <canvas id="my-canvas-popup"></canvas>
+        </div>
+        <div class="modal-footer">
+            <button tabindex="0" class="waves-effect btn-flat" popovertarget="modal1">Sluiten</button>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal" popover>
+        <div class="modal-header black-text">
+            <h4>Admin pair code</h4>
+        </div>
+        <div class="modal-content black-text">
+            <p id="adminPin">De code is: </p>
+        </div>
+        <div class="modal-footer">
+            <button tabindex="0" class="waves-effect btn-flat" popovertarget="modal2">Sluiten</button>
+        </div>
+    </div>
+
+    <div class="card" id="code-card">
+        <h4>QUIZ TIME!</h4>
+        <div>
+            <h5 id="code">PIN: <br>
+                <div class="preloader-wrapper small active" id="hide_on_load">
+                    <div class="spinner-layer spinner-blue-only">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </h5>
+        </div>
+        <p>Wacht tot de admin de quiz start via het dashboard.</p>
+        <br>
+        <canvas id="my-canvas"></canvas>
+    </div>
+
+    <div class="card" id="main-card" hidden>
+        <h4 id="vraagTitel">Vraag komt hier</h4>
+        <img id="vraagFoto" src="" alt="Vraag afbeelding" hidden>
+        <h5 id="vraagStatus" class="blue-text text-lighten-2"></h5>
+    </div>
+
+    <div class="card" id="eind-card" hidden>
+        <h4>Einduitslag</h4>
+        <ul id="scoreLijst" class="collection">
+        </ul>
+    </div>
+
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large blue">
+            <i class="large material-icons">dehaze</i>
+        </a>
+        <ul>
+            <li><button class="btn-floating blue" popovertarget="modal1"><i class="material-icons">pin</i></button></li>
+            <li><button class="btn-floating blue" popovertarget="modal2"><i
+                        class="material-icons">admin_panel_settings</i></button></li>
+        </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@materializecss/materialize@2.2.2/dist/js/materialize.min.js"></script>
+    <script type="module" src="index.js" defer></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            M.AutoInit();
+            const elems = document.querySelectorAll('.fixed-action-btn');
+            M.FloatingActionButton.init(elems, { direction: 'left', hoverEnabled: false });
+        });
+    </script>
+</body>
+
+</html>
