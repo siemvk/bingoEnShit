@@ -90,7 +90,7 @@ function sendUI(player: playerId) {
                 elements: [
                     {
                         type: "txt",
-                        content: "Wacht tot de bingo begint!",
+                        content: "Please wait until the bingo starts!",
                         id: "please-wait"
                     }
                 ]

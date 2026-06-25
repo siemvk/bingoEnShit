@@ -1,6 +1,10 @@
 import { copyFile, mkdir } from "node:fs/promises";
 
-const clients = ["gameHost", "player", "ytding"];
+const clients = [
+  "gameHost",
+  "player",
+  // "ytding"
+];
 
 console.log("Bouwen en syncen van clients gestart... 🚀");
 

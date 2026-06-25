@@ -1,3 +1,15 @@
+// Hi reader of this code.
+// This is not finished.
+// its still in dutch
+// and i want to redo it since its vibe coded slop
+// - siemvk
+
+
+
+
+
+
+
 import { playerStateUpdate, type element, type playerId, type toClient, type toServer } from "../packet.js"
 /// <reference types="qrcode" />
 import type typesForQR from 'qrcode';
@@ -8,35 +20,212 @@ interface Question {
     vraag: string;
     fotoUrl: string;
     goedAntwoord: string;
-    foutAntwoord: string;
+    fouteAntwoorden: string[]; // <-- Dit is nu een lijst
 }
 
 const vragen: Question[] = [
     {
-        vraag: "Hoelang ben ik bezig geweest met deze websites",
-        fotoUrl: "https://cdn.hackclub.com/019ef71a-b87d-7e90-a77d-f3de13357d18/image.png",
-        goedAntwoord: "11h",
-        foutAntwoord: "13h"
+        "vraag": "Wat is de naam van het district dat bekend staat om de mijnbouw en waar de 'Vlammende Vrouw' (Girl on Fire) vandaan komt?",
+        "fotoUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Coal_mine_Wyoming.jpg",
+        "goedAntwoord": "District 12",
+        "fouteAntwoorden": [
+            "District 1",
+            "District 11",
+            "District 4"
+        ]
     },
     {
-        vraag: "Welk video is meer bekeken?",
-        fotoUrl: "https://cdn.nest.rip/uploads/bb365825-c5d3-4fcc-98de-8fdb0c30952d.png",
-        goedAntwoord: "mark v poetin",
-        foutAntwoord: "meest beken sloplive"
+        "vraag": "Hoe heet de vogel die door middel van genetische manipulatie is ontstaan en het symbool wordt van de opstand?",
+        "fotoUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b3/Northern_Mockingbird.jpg",
+        "goedAntwoord": "Spottegaai (Mockingjay)",
+        "fouteAntwoorden": [
+            "Nachtegaal",
+            "Raaf",
+            "Vuurvogel"
+        ]
     },
     {
-        vraag: "Welk jaar was de eerste aflevering van KOEKELOERE",
-        fotoUrl: "https://cdn.hackclub.com/019eea86-330b-76f2-a4fb-ef73ef81a974/image.png",
-        goedAntwoord: '1992',
-        foutAntwoord: "1994"
+        "vraag": "Wie is de kille, genadeloze president van Panem die altijd een witte roos draagt?",
+        "fotoUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4e/White_Rose.jpg",
+        "goedAntwoord": "President Snow",
+        "fouteAntwoorden": [
+            "President Coin",
+            "President Heavensbee",
+            "President Crane"
+        ]
     },
     {
-        fotoUrl: "https://media.tenor.com/NvNNaFdUvTMAAAAM/scottthewoz-scott.gif",
-        vraag: "Hoe heet deze gast (idfk man het is 3:10)",
-        goedAntwoord: "scott the woz",
-        foutAntwoord: "scott the waz"
+        "vraag": "Welk wapen wordt in de fatale arena voornamelijk gebruikt door Katniss om te jagen en te overleven?",
+        "fotoUrl": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Bow_and_arrow_2.jpg",
+        "goedAntwoord": "Pijl en boog",
+        "fouteAntwoorden": [
+            "Zwaard",
+            "Speer",
+            "Werpmessen"
+        ]
+    },
+    {
+        "vraag": "Hoe heten de dodelijke, gemuteerde wespen die hallucinaties veroorzaken als je gestoken wordt?",
+        "fotoUrl": "https://upload.wikimedia.org/wikipedia/commons/2/24/Vespula_germanica_Richard_Bartz.jpg",
+        "goedAntwoord": "Tracker Jackers",
+        "fouteAntwoorden": [
+            "Killer Bees",
+            "Venom Wasps",
+            "Death Stingers"
+        ]
+    },
+    {
+        "vraag": "Welk zeldzaam materiaal uit de 'Nether' wordt gebruikt om diamanten uitrusting te upgraden?",
+        "fotoUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Gold_ingots.jpg",
+        "goedAntwoord": "Netherite",
+        "fouteAntwoorden": [
+            "Obsidian",
+            "Quartz",
+            "Glowstone"
+        ]
+    },
+    {
+        "vraag": "Hoe heet het groene wezen dat stilletjes op je afkomt en ontploft als het dichtbij genoeg is?",
+        "fotoUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Explosion_icon.svg",
+        "goedAntwoord": "Creeper",
+        "fouteAntwoorden": [
+            "Zombie",
+            "Enderman",
+            "Skeleton"
+        ]
+    },
+    {
+        "vraag": "Wat moet je bouwen met minimaal 10 blokken obsidiaan en aansteken met een vuursteen om naar een andere dimensie te reizen?",
+        "fotoUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Obsidian_1.jpg",
+        "goedAntwoord": "Nether Portal",
+        "fouteAntwoorden": [
+            "End Portal",
+            "Aether Portal",
+            "Twilight Portal"
+        ]
+    },
+    {
+        "vraag": "Welk gereedschap is het meest efficiënt om stenen blokken en ertsen te breken?",
+        "fotoUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Pickaxe.jpg",
+        "goedAntwoord": "Houweel (Pickaxe)",
+        "fouteAntwoorden": [
+            "Bijl",
+            "Schep",
+            "Zwaard"
+        ]
+    },
+    {
+        "vraag": "Hoe heet de eindbaas, een gigantisch vliegend beest, dat je in de 'End' dimensie moet verslaan?",
+        "fotoUrl": "https://upload.wikimedia.org/wikipedia/commons/d/da/Welsh_Dragon.svg",
+        "goedAntwoord": "Ender Dragon",
+        "fouteAntwoorden": [
+            "Wither",
+            "Elder Guardian",
+            "Warden"
+        ]
+    },
+    {
+        "vraag": "In welk gevallen, ondergronds insectenrijk speelt het verhaal zich af?",
+        "fotoUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Stag_beetle_1.jpg",
+        "goedAntwoord": "Hallownest",
+        "fouteAntwoorden": [
+            "Deepnest",
+            "Pharloom",
+            "Dirtmouth"
+        ]
+    },
+    {
+        "vraag": "Hoe heet het wapen, dat sprekend op een stuk gereedschap lijkt, dat de zwijgende ridder hanteert?",
+        "fotoUrl": "https://upload.wikimedia.org/wikipedia/commons/1/13/Nails.jpg",
+        "goedAntwoord": "Nail (Spijker)",
+        "fouteAntwoorden": [
+            "Sword",
+            "Needle",
+            "Sting"
+        ]
+    },
+    {
+        "vraag": "Welk materiaal of valuta verzamel je door vijanden te verslaan om kaarten en upgrades te kunnen kopen?",
+        "fotoUrl": "https://upload.wikimedia.org/wikipedia/commons/6/67/Ammonite.jpg",
+        "goedAntwoord": "Geo",
+        "fouteAntwoorden": [
+            "Souls",
+            "Essence",
+            "Charms"
+        ]
+    },
+    {
+        "vraag": "Hoe heet de witte energie die je uit vijanden slaat en verzamelt om jezelf te genezen of spreuken te gebruiken?",
+        "fotoUrl": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Solid_white.svg",
+        "goedAntwoord": "Soul",
+        "fouteAntwoorden": [
+            "Void",
+            "Essence",
+            "Lifeblood"
+        ]
+    },
+    {
+        "vraag": "Wie is het vriendelijke, oude personage dat altijd achterblijft in het troosteloze bovengrondse dorpje?",
+        "fotoUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Bug_icon.svg",
+        "goedAntwoord": "Elderbug",
+        "fouteAntwoorden": [
+            "Cornifer",
+            "Sly",
+            "Hornet"
+        ]
+    },
+    {
+        "vraag": "Hoe heette het invloedrijke satirische nieuwsprogramma dat deze presentator jarenlang op de NPO presenteerde aan het eind van het weekend?",
+        "fotoUrl": "https://upload.wikimedia.org/wikipedia/commons/6/65/TV_icon.svg",
+        "goedAntwoord": "Zondag met Lubach",
+        "fouteAntwoorden": [
+            "De Avondshow",
+            "Dit was het nieuws",
+            "Even tot hier"
+        ]
+    },
+    {
+        "vraag": "Met welke titel wilde deze satiricus zichzelf in 2015 via een burgerinitiatief laten bekronen?",
+        "fotoUrl": "https://upload.wikimedia.org/wikipedia/commons/2/23/Tutanchamun_Maske.jpg",
+        "goedAntwoord": "Farao der Nederlanden",
+        "fouteAntwoorden": [
+            "Keizer der Lage Landen",
+            "Koning van de Televisie",
+            "President van de NPO"
+        ]
+    },
+    {
+        "vraag": "Welk succesvol dagelijks actualiteitenprogramma ging hij presenteren nadat hij stopte met zijn wekelijkse format?",
+        "fotoUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e1/FullMoon2010.jpg",
+        "goedAntwoord": "De Avondshow",
+        "fouteAntwoorden": [
+            "Laat op Eén",
+            "Lubach Late Night",
+            "De Dagelijkse Show"
+        ]
+    },
+    {
+        "vraag": "Met welke bekende kreet in een virale video introduceerde hij zijn land aan de toenmalige Amerikaanse president Donald Trump?",
+        "fotoUrl": "https://upload.wikimedia.org/wikipedia/commons/2/20/Flag_of_the_Netherlands.svg",
+        "goedAntwoord": "The Netherlands Second",
+        "fouteAntwoorden": [
+            "The Netherlands Best",
+            "Dutch First",
+            "We Are Second"
+        ]
+    },
+    {
+        "vraag": "Onder welk pseudoniem had deze komiek en presentator in 2001 een nummer 1-hit in de Top 40 met het nummer 'Jelle'?",
+        "fotoUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Musical_notes.svg",
+        "goedAntwoord": "Slimme Schemer",
+        "fouteAntwoorden": [
+            "MC Lubach",
+            "Hartebreker",
+            "De Satiricus"
+        ]
     }
-];
+]
+
 // ----------------------------- //
 
 const code = document.getElementById("code");
@@ -192,15 +381,16 @@ function sendUI(player: playerId) {
             elements.push({ type: "txt", content: "Antwoord verstuurd! Wacht op de rest...", id: "wait" });
         } else {
             const q = vragen[currentQuestionIndex]!;
-            // Schud de 2 antwoorden zodat de juiste niet altijd bovenaan staat
-            const answers = [q.goedAntwoord, q.foutAntwoord].sort(() => Math.random() - 0.5);
+
+            // Gooi het goede antwoord en de lijst foute antwoorden in één lijst en schud deze
+            const answers = [q.goedAntwoord, ...q.fouteAntwoorden].sort(() => Math.random() - 0.5);
 
             elements.push({ type: "txt", content: "Kies je antwoord:", id: "qText" });
-            answers.forEach(ans => {
+            answers.forEach((ans) => {
                 elements.push({
                     type: "button",
                     content: ans,
-                    icon: "radio_button_unchecked", // <-- Deze eigenschap is verplicht
+                    icon: "radio_button_unchecked",
                     id: "ans-" + ans,
                     interaction: "sendToHost"
                 });
@@ -224,7 +414,6 @@ function sendUI(player: playerId) {
 
     wsSend(ws, { type: "UI-set", player, elements });
 }
-
 // Host UI (Dit is wat iedereen op het grote scherm ziet)
 function updateHostUI() {
     const codeCard = document.getElementById("code-card")!;
@@ -281,18 +470,32 @@ function sendAdminState() {
     if (fase === "voorbereiden") {
         elList.push({ type: "button", id: "startQuiz", content: "Start Quiz", icon: "play_arrow", interaction: "sendToHost" });
     } else if (fase === "vraag") {
+        const q = vragen[currentQuestionIndex]!;
+
+        // --- Toon vraag en antwoorden aan de Admin ---
+        elList.push({ type: "txt", id: "admin-vraag", content: `Huidige vraag: ${q.vraag}` });
+        elList.push({ type: "txt", id: "admin-goed", content: `✅ ${q.goedAntwoord}` });
+        q.fouteAntwoorden.forEach((fout, index) => {
+            elList.push({ type: "txt", id: `admin-fout-${index}`, content: `❌ ${fout}` });
+        });
+        // ---------------------------------------------
+
         elList.push({ type: "button", id: "toonUitslag", content: "Sluit vraag & Toon Antwoord", icon: "visibility", interaction: "sendToHost" });
     } else if (fase === "uitslag") {
         elList.push({ type: "button", id: "volgendeVraag", content: "Volgende Vraag / Afronden", icon: "navigate_next", interaction: "sendToHost" });
     } else if (fase === "einde") {
         elList.push({ type: "button", id: "resetQuiz", content: "Terug naar start", icon: "refresh", interaction: "sendToHost" });
     }
-
+    elList.push({
+        type: "txt",
+        content: "Players:",
+        id: "uaweiufhaw",
+    })
     players.forEach((p) => {
         elList.push({ type: 'button', id: "kick-" + p, content: "Kick " + p, icon: "block", interaction: "sendToHost" })
-    })
+    });
 
-    wsSend(adminWs, { type: "UI-set", player: admin, elements: elList })
+    wsSend(adminWs, { type: "UI-set", player: admin, elements: elList });
 }
 
 function updC() {
