@@ -18,5 +18,3 @@ features:
 6. close the admin code popup
 7. let your players join
 8. start the bingo and play bingo
-
-in later versions I asked chatgpt to do a few things.
